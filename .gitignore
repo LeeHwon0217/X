@@ -7,3 +7,5 @@ package-lock.json
 
 #MacOS
 .DS_Store
+
+forgpt.mjs
