@@ -5,7 +5,7 @@ dotenv.config();
 function required(key, defaultValue = undefined) {
   const value = process.env[key] || defaultValue;
   if (value == null) {
-    throw new Error(`키 ${key}는 undefined!`);
+    throw new Error(`키 ${key}는 undefined!!`);
   }
   return value;
 }
@@ -13,12 +13,15 @@ function required(key, defaultValue = undefined) {
 export const config = {
   jwt: {
     secretKey: required("JWT_SECRET"),
-    expiresInSec: parseInt(required("JMT_EXPRESS_SEC", 86400)),
+    expiresInSec: parseInt(required("JWT_EXPIRES_SEC", 86400)),
   },
   bcrypt: {
-    saltRounds: parseInt(required("BCRYPT_SALT_ROUND", 10)),
+    saltRounds: parseInt(required("BCRYPT_SALT_ROUNDS", 10)),
   },
   host: {
     port: parseInt(required("HOST_PORT", 8080)),
+  },
+  db: {
+    host: required("DB_HOST"),
   },
 };
